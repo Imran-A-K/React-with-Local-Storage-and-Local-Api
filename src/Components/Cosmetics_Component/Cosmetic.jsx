@@ -11,7 +11,7 @@ const Cosmetic = (props) => {
         <h2>Buy this: {name} </h2>
         <p>Only for: ${price}</p>
         <p><small>it has id: {id}</small></p>
-        <button>Add to cart</button>
+        <button onClick={addToCart}>Add to cart</button>
     </div>
   )
 }
