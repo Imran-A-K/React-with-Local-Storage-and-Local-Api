@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { getTotal } from '../utilities/fakedb';
 import Cosmetic from './Cosmetics_Component/Cosmetic'
 
 const Cosmetics = () => {
@@ -10,9 +11,11 @@ const Cosmetics = () => {
 
     }, []);
 
+    const total = getTotal(cosmetics);
   return (
     <div>
         <h1>welcome to my fashion store</h1>
+        <p>Money needed : {total}</p>
         {
             cosmetics.map(cosmetic => <Cosmetic 
             key={cosmetic.id}

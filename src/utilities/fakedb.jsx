@@ -23,5 +23,26 @@ const addToDb = id =>{
     localStorage.setItem('shopping-cart',JSON.stringify(shoppingCart))
 
 }
+const removeFromDb = (id) =>{
+    const storedCart = localStorage.getItem('shopping-cart');
+    if(storedCart){
+        const shoppingCart = JSON.parse(storedCart)
+        if(id in shoppingCart){
+            delete shoppingCart[id]
+            localStorage.setItem('shopping-cart',JSON.stringify(shoppingCart))
+        }
+    }
 
-export {addToDb}
+}
+const deleteShoppingCart = () =>{
+    localStorage.removeItem('shopping-cart')
+}
+const getTotalPrice = products =>{
+    const reducer = (previous, current) => previous + current.price;
+    const total = products.reduce(reducer,0);
+    return total;
+}
+export {addToDb,
+    removeFromDb,
+deleteShoppingCart,
+getTotalPrice as getTotal}
